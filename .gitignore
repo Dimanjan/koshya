@@ -57,7 +57,7 @@ Thumbs.db
 
 # Static files
 staticfiles/
-static/
+# static/  # Commented out - we need static files in repo for deployment
 
 # Coverage reports
 htmlcov/
