@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koshya Voucher System</title>
+    <link rel="stylesheet" href="{% load static %}{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="max-width: 600px; margin: 100px auto; text-align: center;">
+        <div class="card">
+            <div class="card-body">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">🎫</h1>
+                    <h1 class="card-title" style="margin-bottom: 1rem;"><span style="color: var(--primary-color);">Koshya</span> <span style="color: var(--text-secondary);">Voucher System</span></h1>
+                <p class="text-secondary" style="margin-bottom: 2rem;">
+                    Admin dashboard for voucher management and transaction tracking
+                </p>
+                
+                <!-- Login/Register Tabs -->
+                <div class="tabs" style="margin-bottom: 1rem;">
+                    <button class="tab-button active" onclick="switchAuthTab('login')" id="loginTab">
+                        Login
+                    </button>
+                    <button class="tab-button" onclick="switchAuthTab('register')" id="registerTab">
+                        Create Account
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" style="display: block;">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label" for="reg_username">Username</label>
+                        <input type="text" id="reg_username" name="username" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg_email">Email (Optional)</label>
+                        <input type="email" id="reg_email" name="email" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg_password">Password (8+ characters)</label>
+                        <input type="password" id="reg_password" name="password" class="form-input" minlength="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reg_password_confirm">Confirm Password</label>
+                        <input type="password" id="reg_password_confirm" name="password_confirm" class="form-input" minlength="8" required>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width: 100%;">Create Account</button>
+                </form>
+
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 1rem;">Quick Start</h3>
+                    <div class="text-secondary" style="text-align: left;">
+                        <p><strong>For Administrators:</strong></p>
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                            <li>Login with your admin credentials</li>
+                            <li>Create vouchers with initial balances</li>
+                            <li>Recharge existing vouchers</li>
+                            <li>View all transactions and balances</li>
+                            <li>Monitor voucher usage and statistics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer" class="container" style="position: fixed; top: 20px; right: 20px; z-index: 1001;"></div>
+
+    <script src="{% load static %}{% static 'js/app.js' %}"></script>
+    <script>
+        // Tab switching functionality
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+
+            if (tab === 'login') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+            }
+        }
+
+        // Check if user is already logged in (but don't auto-redirect)
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // User is logged in, show a message but don't redirect
+                console.log('User is already logged in');
+            }
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            };
+
+            try {
+                const response = await fetch('/api/get-token/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    localStorage.setItem('authToken', result.token);
+                    localStorage.setItem('user', JSON.stringify(result));
+                    showAlert('Login successful! Redirecting...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/dashboard/';
+                    }, 1000);
+                } else {
+                    showAlert(`Login failed: ${result.error || 'Invalid credentials'}`, 'error');
+                }
+            } catch (error) {
+                showAlert(`Login failed: ${error.message}`, 'error');
+            }
+        });
+
+        // Register form handler
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const password = formData.get('password');
+            const passwordConfirm = formData.get('password_confirm');
+
+            if (password !== passwordConfirm) {
+                showAlert('Passwords do not match', 'error');
+                return;
+            }
+
+            const data = {
+                username: formData.get('username'),
+                email: formData.get('email') || '',
+                password: password
+            };
+
+            try {
+                const response = await fetch('/api/register/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showAlert('Account created successfully! Please login.', 'success');
+                    switchAuthTab('login');
+                    e.target.reset();
+                } else {
+                    showAlert(`Registration failed: ${result.error || 'Unknown error'}`, 'error');
+                }
+            } catch (error) {
+                showAlert(`Registration failed: ${error.message}`, 'error');
+            }
+        });
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+
+            alertContainer.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
