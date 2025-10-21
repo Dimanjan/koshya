@@ -1,6 +1,6 @@
 # 🎫 Koshya Voucher System
 
-A comprehensive digital voucher management platform designed for businesses to create, distribute, and track digital vouchers with secure payment processing.
+A developer-friendly voucher system for charging small, irregular amounts in Nepal. Perfect for web and mobile developers who want to monetize their tools and services with flexible, usage-based payments.
 
 ## 🌐 Live Demo
 
@@ -22,178 +22,61 @@ Experience the full voucher management system with real-time functionality, secu
 ![Payment Processing](static/images/dashboard-3.png)
 *Secure payment processing interface with real-time balance checking*
 
-## 📞 Support & Contact
+## 🎯 The Problem We Solve
 
-**📧 Email Support**: [vouchernepal@proton.me](mailto:vouchernepal@proton.me)
+### Current Payment Challenges in Nepal
 
-If you encounter any issues, have questions, or need assistance with the voucher system, please don't hesitate to reach out!
+**There are no easy ways to make small, irregular online payments and tracking in Nepal.**
 
-## 🏢 Business Overview
+Traditional solutions have significant limitations:
 
-### What is Koshya Voucher System?
-Koshya Voucher System is a complete digital voucher solution that allows businesses to:
-- **Create digital vouchers** with customizable amounts (Rs 100, 200, 500)
-- **Distribute vouchers** to customers with unique codes
-- **Process payments** using voucher codes at point of sale
-- **Track transactions** with complete audit trails
-- **Manage voucher lifecycle** (active, disabled, sold states)
+1. **Subscription-based systems** - Users pay either too much or too little for their actual consumption
+2. **Payment vendors like eSewa, Khalti** - Have very stringent and expensive API access requirements
+3. **Complex integration** - Difficult setup and maintenance for small developers
 
-### 🎯 Target Use Cases
-- **Restaurants & Cafes**: Gift vouchers, loyalty rewards, promotional offers
-- **Retail Stores**: Store credit, gift cards, promotional vouchers
-- **Service Businesses**: Prepaid services, membership credits
-- **Event Management**: Ticket vouchers, access passes
-- **Corporate Gifting**: Employee rewards, client gifts
+### 🚀 Our Solution
 
-### 💼 Business Benefits
-- **💰 Revenue Generation**: Prepaid vouchers provide immediate cash flow
-- **🎁 Customer Retention**: Gift vouchers encourage repeat visits
-- **📊 Analytics**: Complete transaction tracking and reporting
-- **🔒 Security**: Secure voucher codes prevent fraud
-- **📱 Digital First**: No physical cards needed, mobile-friendly
-- **⚡ Real-time**: Instant voucher validation and payment processing
+**Koshya Voucher System is a step towards solving both problems at once.** Although it has its flaws, it can greatly make it easier to charge for your tools and technologies that you build online.
 
-## 🌟 Key Features
+## 👥 Target Users
 
-### 🎫 Voucher Management
-- **Create Vouchers**: Generate vouchers with initial balance (Rs 100, 200, 500)
-- **Bulk Creation**: Create multiple vouchers at once for efficiency
-- **Unique Codes**: Each voucher gets a unique 8-character code
-- **Balance Tracking**: Real-time balance updates for all transactions
+**Web and mobile developers and small app/website owners** who want to charge small irregular amounts to their users:
 
-### 💳 Payment Processing
-- **Public Payment API**: Customers can pay using voucher codes
-- **Public Balance Check**: **NEW!** Anyone can check voucher balance without login
-- **Instant Validation**: Real-time balance checking and validation
-- **Secure Transactions**: All payments are logged and tracked
-- **Multiple Payment Amounts**: Support for any payment amount up to voucher balance
+- **AI Tools**: Charge per AI photo generation, text processing, or analysis
+- **Content Access**: Pay-per-article reading, premium content access
+- **API Usage**: Metered API calls, usage-based billing
+- **Digital Services**: One-time tool usage, temporary access
 
-### 🔄 Voucher Lifecycle Management
-- **Active Vouchers**: Ready for use, can be recharged or used for payments
-- **Disabled Vouchers**: Temporarily disabled, can be re-enabled
-- **Sold Vouchers**: Marked as sold, code copied to clipboard
-- **Transaction History**: Complete audit trail of all voucher activities
+### 💡 Real-World Example
 
-### 👥 User Management
-- **Admin Accounts**: Create multiple admin users for different locations
-- **Role-based Access**: Admins see only their vouchers, superadmins see all
-- **Secure Authentication**: Token-based authentication for API access
-- **User Registration**: Easy account creation with simplified password requirements
+**If your app has a feature like AI photo maker, you need to track usage.** This system provides an easy way to do it:
 
-### 📊 Business Intelligence
-- **Real-time Statistics**: Total vouchers, active vouchers, total balance
-- **Transaction Reports**: Complete history of all voucher activities
-- **Performance Metrics**: Track voucher usage and revenue
-- **Audit Trail**: Full compliance and tracking capabilities
+1. **User pays you** via WhatsApp/messenger or other chat methods
+2. **You provide voucher code** with equivalent balance
+3. **User uses your app** - API deducts balance as they consume
+4. **Track everything** - Complete usage analytics and payment history
 
-## 🚀 Getting Started
+## 🏗️ System Design Philosophy
 
-### 🌐 Live Application
+### Why Manual Selling?
 
-**🚀 [Access the live application](https://voucherpal.pythonanywhere.com/)**
+**The system is designed for manual payment collection:**
 
-The Koshya Voucher System is already deployed and ready to use! Create an account and start managing vouchers immediately.
+- **Collect payments yourself** through WhatsApp/messenger or other chat forms
+- **Provide voucher codes** with equivalent balance
+- **Use API service** to deduct balance as users consume your app
+- **Maintain control** over payment flow and customer relationships
 
-### 🛠️ Local Development
+### Design Decisions
 
-#### Quick Start (Recommended)
-```bash
-# 1. Clone the repository
-git clone https://github.com/Dimanjan/koshya.git
-cd koshya
+- **Bulk operations** are only available for creating vouchers (not other operations)
+- **Vouchers cannot be deleted** - they can only be disabled for audit trail
+- **Manual payment collection** keeps integration simple and flexible
+- **Public APIs** for easy integration with any application
 
-# 2. Run automated setup
-chmod +x setup.sh
-./setup.sh
+## 🛠️ Developer Integration Guide
 
-# 3. Start the system
-chmod +x start.sh
-./start.sh
-```
-
-#### Access Points
-- **🌐 Web Dashboard**: `http://localhost:8000/` - User-friendly interface
-- **🔧 Admin Panel**: `http://localhost:8000/admin/` - Django admin interface
-- **📡 API Endpoints**: `http://localhost:8000/api/` - Programmatic access
-
-## 💼 Business Workflows
-
-### 1. Creating Vouchers
-1. **Login** to the dashboard
-2. **Set voucher amount** (Rs 100, 200, or 500)
-3. **Choose quantity** (create multiple vouchers at once)
-4. **Generate vouchers** with unique codes
-5. **Distribute** codes to customers
-
-### 2. Customer Payment Process
-1. **Customer provides** voucher code at checkout
-2. **Staff enters** code and payment amount
-3. **System validates** voucher and balance
-4. **Payment processes** instantly if valid
-5. **Receipt generated** with remaining balance
-
-### 3. Voucher Management
-1. **View all vouchers** in organized tabs (Active, Disabled, Sold)
-2. **Recharge vouchers** with additional funds
-3. **Disable vouchers** if needed (can be re-enabled)
-4. **Mark as sold** when distributed to customers
-5. **Track statistics** and performance metrics
-
-## 🛡️ Security & Compliance
-
-### Security Features
-- **🔐 Token Authentication**: Secure API access with time-limited tokens
-- **👤 Role-based Access**: Admins can only access their own vouchers
-- **🛡️ Input Validation**: All inputs are validated and sanitized
-- **📝 Audit Logging**: Complete transaction history for compliance
-- **🔒 Secure Codes**: Unique voucher codes prevent duplication
-
-### Business Compliance
-- **📊 Transaction Tracking**: Every payment and recharge is logged
-- **👥 User Management**: Track which admin created which vouchers
-- **⏰ Timestamps**: All activities are timestamped for audit purposes
-- **🔄 State Management**: Clear voucher states (active, disabled, sold)
-
-## 📈 Business Analytics
-
-### Dashboard Statistics
-- **Total Vouchers**: Complete count of all created vouchers
-- **Active Vouchers**: Currently usable vouchers
-- **Total Balance**: Sum of all active voucher balances
-- **Disabled Vouchers**: Temporarily disabled vouchers
-- **Sold Vouchers**: Vouchers distributed to customers
-
-### Transaction Insights
-- **Payment History**: Complete record of all payments
-- **Recharge Activity**: Track when vouchers are topped up
-- **Usage Patterns**: Understand customer behavior
-- **Revenue Tracking**: Monitor voucher-based revenue
-
-## 🔧 Technical Implementation
-
-### Architecture
-- **Backend**: Django REST Framework with SQLite database
-- **Frontend**: Modern HTML5/CSS3/JavaScript interface
-- **API**: RESTful API with comprehensive documentation
-- **Authentication**: Token-based authentication system
-
-### Key Technologies
-- **Django 4.2**: Robust web framework
-- **Django REST Framework**: API development
-- **SQLite**: Lightweight database for development
-- **Token Authentication**: Secure API access
-- **Role-based Permissions**: Granular access control
-
-## 📚 API Documentation
-
-### Core Endpoints
-- **Authentication**: `/api/get-token/` - Get access token
-- **Voucher Management**: `/api/vouchers/` - Create and manage vouchers
-- **Payment Processing**: `/api/pay/` - Public payment endpoint
-- **Balance Check**: `/api/vouchers/<code>/balance/` - **NEW!** Public balance check
-- **Statistics**: `/api/statistics/` - Business metrics and analytics
-
-### 🌐 Public Endpoints (No Authentication Required)
+### 🌐 Public APIs (No Authentication Required)
 
 #### Check Voucher Balance
 ```bash
@@ -211,76 +94,189 @@ curl https://voucherpal.pythonanywhere.com/api/vouchers/ABC12345/balance/
 }
 ```
 
-#### Make Payment
+#### Process Payment
 ```bash
-# Process payment using voucher code
+# Deduct balance when user consumes your service
 curl -X POST https://voucherpal.pythonanywhere.com/api/pay/ \
   -H "Content-Type: application/json" \
-  -d '{"voucher_code": "ABC12345", "amount": 150.00}'
+  -d '{"voucher_code": "ABC12345", "amount": 50.00}'
 ```
 
-### Integration Examples
+**Response:**
+```json
+{
+    "message": "Payment of Rs 50.00 successful",
+    "voucher_code": "ABC12345",
+    "remaining_balance": 450.00,
+    "transaction_id": 123
+}
+```
+
+### 🔧 Integration Examples
+
+#### JavaScript Integration
+```javascript
+// Check if user has sufficient balance
+async function checkBalance(voucherCode) {
+    const response = await fetch(`https://voucherpal.pythonanywhere.com/api/vouchers/${voucherCode}/balance/`);
+    const data = await response.json();
+    return data.balance;
+}
+
+// Process payment when user uses your service
+async function processPayment(voucherCode, amount) {
+    const response = await fetch('https://voucherpal.pythonanywhere.com/api/pay/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            voucher_code: voucherCode,
+            amount: amount
+        })
+    });
+    return await response.json();
+}
+
+// Example usage in your app
+const userVoucherCode = "ABC12345";
+const serviceCost = 25.00;
+
+// Check balance before providing service
+const balance = await checkBalance(userVoucherCode);
+if (balance >= serviceCost) {
+    // Provide your service
+    await provideAIService();
+    
+    // Deduct payment
+    const result = await processPayment(userVoucherCode, serviceCost);
+    console.log(`Payment processed. Remaining balance: Rs ${result.remaining_balance}`);
+} else {
+    alert('Insufficient balance. Please recharge your voucher.');
+}
+```
+
+#### Python Integration
+```python
+import requests
+
+def check_balance(voucher_code):
+    """Check voucher balance"""
+    response = requests.get(f'https://voucherpal.pythonanywhere.com/api/vouchers/{voucher_code}/balance/')
+    return response.json()
+
+def process_payment(voucher_code, amount):
+    """Process payment for service usage"""
+    response = requests.post('https://voucherpal.pythonanywhere.com/api/pay/', 
+                           json={'voucher_code': voucher_code, 'amount': amount})
+    return response.json()
+
+# Example usage
+voucher_code = "ABC12345"
+service_cost = 25.00
+
+# Check balance
+balance_info = check_balance(voucher_code)
+if balance_info['balance'] >= service_cost:
+    # Provide your service
+    provide_ai_service()
+    
+    # Process payment
+    result = process_payment(voucher_code, service_cost)
+    print(f"Payment processed. Remaining balance: Rs {result['remaining_balance']}")
+else:
+    print("Insufficient balance. Please recharge your voucher.")
+```
+
+### 📊 Business Workflow
+
+#### For Service Providers (You)
+1. **Create vouchers** with initial balances (Rs 100, 200, 500)
+2. **Sell vouchers manually** via WhatsApp, messenger, or other methods
+3. **Provide voucher codes** to customers
+4. **Track usage** through your application
+5. **Monitor analytics** and customer behavior
+
+#### For End Users (Your Customers)
+1. **Purchase voucher** from you via chat/messenger
+2. **Receive voucher code** with balance
+3. **Use your service** - balance automatically deducted
+4. **Check remaining balance** anytime
+5. **Recharge when needed** by purchasing more vouchers
+
+### 🎯 Use Cases
+
+#### AI Photo Generator
+```javascript
+// User wants to generate 5 AI photos
+const photosRequested = 5;
+const costPerPhoto = 10; // Rs 10 per photo
+const totalCost = photosRequested * costPerPhoto;
+
+// Check balance
+const balance = await checkBalance(userVoucherCode);
+if (balance >= totalCost) {
+    // Generate photos
+    const photos = await generateAIPhotos(photosRequested);
+    
+    // Process payment
+    await processPayment(userVoucherCode, totalCost);
+    
+    // Return photos to user
+    return photos;
+}
+```
+
+#### Article Reading System
+```python
+# User wants to read premium article
+article_cost = 15.00  # Rs 15 per article
+
+# Check balance
+balance_info = check_balance(user_voucher_code)
+if balance_info['balance'] >= article_cost:
+    # Show article content
+    show_premium_article()
+    
+    # Process payment
+    result = process_payment(user_voucher_code, article_cost)
+    print(f"Article unlocked. Remaining balance: Rs {result['remaining_balance']}")
+```
+
+## 🔧 Admin Management
+
+### Creating Vouchers (Requires Authentication)
 ```bash
-# Create voucher (requires authentication)
-curl -X POST http://localhost:8000/api/vouchers/ \
-  -H "Authorization: Token your-token" \
-  -d '{"initial_value": 500}'
+# Get authentication token first
+curl -X POST https://voucherpal.pythonanywhere.com/api/get-token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "your_username", "password": "your_password"}'
 
-# Check balance (public - no authentication needed)
-curl https://voucherpal.pythonanywhere.com/api/vouchers/ABC12345/balance/
-
-# Process payment (public - no authentication needed)
-curl -X POST https://voucherpal.pythonanywhere.com/api/pay/ \
-  -d '{"voucher_code": "ABC12345", "amount": 150.00}'
+# Create vouchers (use token from above response)
+curl -X POST https://voucherpal.pythonanywhere.com/api/vouchers/ \
+  -H "Authorization: Token your_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{"initial_value": 500, "count": 10}'
 ```
 
-## 🎯 Business Use Cases
+### Voucher Management
+- **View all vouchers** with status (active, disabled, sold)
+- **Recharge vouchers** with additional funds
+- **Disable/enable vouchers** as needed
+- **Track statistics** and usage analytics
+- **Monitor transactions** and payment history
 
-### Restaurant Chain
-- **Gift Vouchers**: Customers buy vouchers as gifts
-- **Loyalty Rewards**: Reward frequent customers
-- **Promotional Campaigns**: Special offers and discounts
-- **Corporate Catering**: Prepaid meal vouchers for employees
+## 📞 Support & Contact
 
-### Retail Store
-- **Store Credit**: Return/exchange vouchers
-- **Gift Cards**: Digital gift card system
-- **Promotional Offers**: Discount vouchers
-- **Employee Benefits**: Staff meal vouchers
-
-### Service Business
-- **Prepaid Services**: Advance payment for services
-- **Membership Credits**: Loyalty program points
-- **Gift Certificates**: Service vouchers as gifts
-- **Corporate Accounts**: B2B service vouchers
-
-## 📞 Support & Documentation
-
-### 📧 Contact Support
-
-**Email**: [vouchernepal@proton.me](mailto:vouchernepal@proton.me)
+**📧 Email Support**: [vouchernepal@proton.me](mailto:vouchernepal@proton.me)
 
 If you encounter any issues, have questions, or need assistance with the voucher system, please don't hesitate to reach out!
 
-### Documentation Files
-- **📖 API Documentation**: Complete API reference with examples
-- **🎨 Frontend Guide**: User interface documentation
-- **🧪 Testing Guide**: Comprehensive edge case testing
-- **🔧 Setup Guide**: Detailed installation instructions
-
-### Getting Help
-- **📚 Documentation**: Comprehensive guides and examples
-- **🧪 Testing**: Built-in edge case testing suite
-- **🔍 Troubleshooting**: Common issues and solutions
-- **📊 Analytics**: Business intelligence and reporting
-
----
-
 ## 🚀 Ready to Start?
 
-1. **Run the setup script** to get started quickly
-2. **Access the dashboard** at `http://localhost:8000/`
-3. **Create your first vouchers** and start accepting payments
-4. **Monitor your business** with real-time analytics
+1. **Try the live demo** at [https://voucherpal.pythonanywhere.com/](https://voucherpal.pythonanywhere.com/)
+2. **Create your first vouchers** and start accepting payments
+3. **Integrate the APIs** into your application
+4. **Start monetizing** your tools and services!
 
-**Koshya Voucher System** - Your complete digital voucher solution! 🎫✨
+**Koshya Voucher System** - Your complete solution for flexible, usage-based payments in Nepal! 🎫✨
