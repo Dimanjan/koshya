@@ -2,6 +2,18 @@
 
 A comprehensive digital voucher management platform designed for businesses to create, distribute, and track digital vouchers with secure payment processing.
 
+## 🌐 Live Demo
+
+**🚀 [Try the live application](https://voucherpal.pythonanywhere.com/)**
+
+Experience the full voucher management system with real-time functionality, secure payment processing, and comprehensive analytics.
+
+## 📞 Support & Contact
+
+**📧 Email Support**: [vouchernepal@proton.me](mailto:vouchernepal@proton.me)
+
+If you encounter any issues, have questions, or need assistance with the voucher system, please don't hesitate to reach out!
+
 ## 🏢 Business Overview
 
 ### What is Koshya Voucher System?
@@ -61,10 +73,18 @@ Koshya Voucher System is a complete digital voucher solution that allows busines
 
 ## 🚀 Getting Started
 
-### Quick Start (Recommended)
+### 🌐 Live Application
+
+**🚀 [Access the live application](https://voucherpal.pythonanywhere.com/)**
+
+The Koshya Voucher System is already deployed and ready to use! Create an account and start managing vouchers immediately.
+
+### 🛠️ Local Development
+
+#### Quick Start (Recommended)
 ```bash
 # 1. Clone the repository
-git clone <repository-url>
+git clone https://github.com/Dimanjan/koshya.git
 cd koshya
 
 # 2. Run automated setup
@@ -76,7 +96,7 @@ chmod +x start.sh
 ./start.sh
 ```
 
-### Access Points
+#### Access Points
 - **🌐 Web Dashboard**: `http://localhost:8000/` - User-friendly interface
 - **🔧 Admin Panel**: `http://localhost:8000/admin/` - Django admin interface
 - **📡 API Endpoints**: `http://localhost:8000/api/` - Programmatic access
@@ -190,6 +210,12 @@ curl -X POST http://localhost:8000/api/pay/ \
 - **Corporate Accounts**: B2B service vouchers
 
 ## 📞 Support & Documentation
+
+### 📧 Contact Support
+
+**Email**: [vouchernepal@proton.me](mailto:vouchernepal@proton.me)
+
+If you encounter any issues, have questions, or need assistance with the voucher system, please don't hesitate to reach out!
 
 ### Documentation Files
 - **📖 API Documentation**: Complete API reference with examples
