@@ -1,12 +1,11 @@
 # 🎫 Koshya Voucher System
 
-A developer-friendly voucher system for charging small, irregular amounts in Nepal. Perfect for web and mobile developers who want to monetize their tools and services with flexible, usage-based payments.
+An indie developer-friendly voucher system for charging small, irregular amounts in Nepal. Perfect for web and mobile developers who want to monetize their tools and services with flexible, usage-based payments.
 
 ## 🌐 Live Demo
 
 **🚀 [Try the live application](https://voucherpal.pythonanywhere.com/)**
 
-Experience the full voucher management system with real-time functionality, secure payment processing, and comprehensive analytics.
 
 ## 📸 Dashboard Screenshots
 
@@ -20,7 +19,7 @@ Experience the full voucher management system with real-time functionality, secu
 
 ### Payment Processing
 ![Payment Processing](static/images/dashboard-3.png)
-*Secure payment processing interface with real-time balance checking*
+* interface with real-time balance checking*
 
 ## 🎯 The Problem We Solve
 
