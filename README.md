@@ -49,6 +49,7 @@ Koshya Voucher System is a complete digital voucher solution that allows busines
 
 ### 💳 Payment Processing
 - **Public Payment API**: Customers can pay using voucher codes
+- **Public Balance Check**: **NEW!** Anyone can check voucher balance without login
 - **Instant Validation**: Real-time balance checking and validation
 - **Secure Transactions**: All payments are logged and tracked
 - **Multiple Payment Amounts**: Support for any payment amount up to voucher balance
@@ -175,17 +176,47 @@ chmod +x start.sh
 - **Authentication**: `/api/get-token/` - Get access token
 - **Voucher Management**: `/api/vouchers/` - Create and manage vouchers
 - **Payment Processing**: `/api/pay/` - Public payment endpoint
+- **Balance Check**: `/api/vouchers/<code>/balance/` - **NEW!** Public balance check
 - **Statistics**: `/api/statistics/` - Business metrics and analytics
+
+### 🌐 Public Endpoints (No Authentication Required)
+
+#### Check Voucher Balance
+```bash
+# Check any voucher balance - no login required!
+curl https://voucherpal.pythonanywhere.com/api/vouchers/ABC12345/balance/
+```
+
+**Response:**
+```json
+{
+    "voucher_code": "ABC12345",
+    "balance": 500.00,
+    "status": "active",
+    "message": "Voucher is active and ready for use"
+}
+```
+
+#### Make Payment
+```bash
+# Process payment using voucher code
+curl -X POST https://voucherpal.pythonanywhere.com/api/pay/ \
+  -H "Content-Type: application/json" \
+  -d '{"voucher_code": "ABC12345", "amount": 150.00}'
+```
 
 ### Integration Examples
 ```bash
-# Create voucher
+# Create voucher (requires authentication)
 curl -X POST http://localhost:8000/api/vouchers/ \
   -H "Authorization: Token your-token" \
   -d '{"initial_value": 500}'
 
-# Process payment
-curl -X POST http://localhost:8000/api/pay/ \
+# Check balance (public - no authentication needed)
+curl https://voucherpal.pythonanywhere.com/api/vouchers/ABC12345/balance/
+
+# Process payment (public - no authentication needed)
+curl -X POST https://voucherpal.pythonanywhere.com/api/pay/ \
   -d '{"voucher_code": "ABC12345", "amount": 150.00}'
 ```
 
