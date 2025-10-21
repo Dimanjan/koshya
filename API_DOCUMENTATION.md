@@ -279,6 +279,51 @@ POST /api/pay/
 }
 ```
 
+#### Check Voucher Balance
+```http
+GET /api/vouchers/<code>/balance/
+```
+- **Authentication**: None required
+- **Description**: Public endpoint to check voucher balance and status
+
+**Response (200 OK) - Active Voucher:**
+```json
+{
+    "voucher_code": "ABC12345",
+    "balance": 500.00,
+    "status": "active",
+    "message": "Voucher is active and ready for use"
+}
+```
+
+**Response (200 OK) - Disabled Voucher:**
+```json
+{
+    "voucher_code": "ABC12345",
+    "balance": 500.00,
+    "status": "disabled",
+    "message": "Voucher is disabled"
+}
+```
+
+**Response (200 OK) - Sold Voucher:**
+```json
+{
+    "voucher_code": "ABC12345",
+    "balance": 500.00,
+    "status": "sold",
+    "message": "Voucher has been sold"
+}
+```
+
+**Response (404 Not Found) - Invalid Voucher:**
+```json
+{
+    "error": "Voucher not found",
+    "voucher_code": "INVALID123"
+}
+```
+
 ### 5. Statistics
 
 #### Get Statistics

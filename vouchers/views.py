@@ -340,6 +340,47 @@ def make_payment(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def check_voucher_balance(request, code):
+    """
+    Public endpoint to check voucher balance.
+    GET /api/vouchers/<code>/balance/
+    """
+    try:
+        voucher = Voucher.objects.get(code=code)
+        
+        # Check if voucher is disabled or sold
+        if voucher.is_disabled:
+            return Response({
+                'voucher_code': voucher.code,
+                'balance': float(voucher.current_balance),
+                'status': 'disabled',
+                'message': 'Voucher is disabled'
+            }, status=status.HTTP_200_OK)
+        
+        if voucher.is_sold:
+            return Response({
+                'voucher_code': voucher.code,
+                'balance': float(voucher.current_balance),
+                'status': 'sold',
+                'message': 'Voucher has been sold'
+            }, status=status.HTTP_200_OK)
+        
+        return Response({
+            'voucher_code': voucher.code,
+            'balance': float(voucher.current_balance),
+            'status': 'active',
+            'message': 'Voucher is active and ready for use'
+        }, status=status.HTTP_200_OK)
+        
+    except Voucher.DoesNotExist:
+        return Response({
+            'error': 'Voucher not found',
+            'voucher_code': code
+        }, status=status.HTTP_404_NOT_FOUND)
+
+
 # Frontend Views
 def dashboard_view(request):
     """Main dashboard view"""

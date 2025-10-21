@@ -25,4 +25,7 @@ urlpatterns = [
 
     # Public payment endpoint
     path('pay/', views.make_payment, name='make-payment'),
+    
+    # Public balance check endpoint
+    path('vouchers/<str:code>/balance/', views.check_voucher_balance, name='check-balance'),
 ]
